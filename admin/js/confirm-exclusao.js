@@ -17,6 +17,7 @@ for( let link of linksExcluir ){
         // Caixa de diálogo para capturar a resposta do usuário
         // (OK/SIM -> true   -  Cancelar/NÃO -> false)
         let resposta = confirm("Tem certeza que deseja excluir?");
+        console.log(resposta);
 
         /* Somente se a resposta for true */
         if( resposta ) {

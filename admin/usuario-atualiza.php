@@ -21,10 +21,8 @@ if(isset($_POST['atualizar'])){
     $senha = verificaSenha($_POST['senha'], $usuario['senha']);
   }
 
-  // TESTE DE SENHAS
-  echo "senha no banco: ".$usuario['senha']; 
-  echo "<br>";
-  echo "formulário: ". $senha;
+  atualizarUsuario($conexao, $id, $nome, $email, $senha, $tipo);
+  header("location:usuarios.php");
 }
 ?>      
 <div class="row">
