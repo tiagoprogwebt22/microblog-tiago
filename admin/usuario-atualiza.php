@@ -20,6 +20,11 @@ if(isset($_POST['atualizar'])){
   campo senha, precisaremos verificar a senha digitada. */
     $senha = verificaSenha($_POST['senha'], $usuario['senha']);
   }
+
+  // TESTE DE SENHAS
+  echo "senha no banco: ".$usuario['senha']; 
+  echo "<br>";
+  echo "formulário: ". $senha;
 }
 ?>      
 <div class="row">
