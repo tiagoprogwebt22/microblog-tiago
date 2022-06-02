@@ -40,6 +40,16 @@ function logout(){
 }
 
 
+function verificaAcessoAdmin(){
+    /* Se o tipo de usuário logado NÃO FOR admin */
+    if($_SESSION['tipo'] != 'admin'){
+        // Redirecione para a página nao-autorizado
+        header("location:nao-autorizado.php");
+        die(); // ou exit
+    }
+}
+
+
 
 
 

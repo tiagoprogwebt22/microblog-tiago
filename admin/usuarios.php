@@ -1,6 +1,7 @@
 <?php 
 require "../inc/funcoes-usuarios.php";
 require "../inc/cabecalho-admin.php"; 
+verificaAcessoAdmin();
 
 $usuarios = lerUsuarios($conexao);
 $quantidade = count($usuarios);
