@@ -93,7 +93,7 @@ function atualizarUsuario(
 
 
 // Função buscarUsuario: usada em login.php
-function buscarUsuario(mysqli $conexao, string $email):array {
+function buscarUsuario(mysqli $conexao, string $email) {
     $sql = "SELECT id, nome, email, tipo, senha FROM usuarios
             WHERE email = '$email'";
     
