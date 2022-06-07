@@ -64,12 +64,24 @@ function upload($arquivo){
 
     // Verificando se o arquivo enviado NÃO É um dos aceitos
     if( !in_array($arquivo['type'], $tiposValidos) ){
-        die("
-            <script>alert('Formato é inválido!'); history.back();</script>
-        ");
+        die("<script>alert('Formato é inválido!'); history.back();</script>");
     }
 
+    // Acessando apenas o nome do arquivo
+    $nome = $arquivo['name'];  // $_FILES['arquivo']['name'];
 
+    // Acessando dados de acesso temporário ao arquivo
+    $temporario = $arquivo['tmp_name'];
+
+    // Pasta de destino do arquivo que está sendo enviado
+    $destino = "../imagens/$nome";
+
+    /* Se o processo de envio temporario para destino for
+    feito com sucesso, então a função retorna verdadeiro (indicando
+    o sucesso no processo) */
+    if( move_uploaded_file($temporario, $destino) ){
+        return true;
+    }
 } // fim upload
 
 
