@@ -1,7 +1,20 @@
 <?php
 require "../inc/cabecalho-admin.php"; 
+require "../inc/funcoes-posts.php"; 
 
+// Pegar o ID do post vindo da URL
+$idPost = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 
+// Pegar os dados de sessão do usuário logado
+$idUsuarioLogado = $_SESSION['id'];
+$tipoUsuarioLogado = $_SESSION['tipo'];
+
+// Chamamos a função passando os parâmetros e pegamos o resultado dela
+$post = lerUmPost($conexao, $idPost, $idUsuarioLogado, $tipoUsuarioLogado);
+
+echo "<pre>";
+var_dump($post);
+echo "</pre>";
 ?>
        
 <div class="row">
