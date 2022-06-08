@@ -44,7 +44,7 @@ if(isset($_POST['atualizar'])){
   <article class="col-12 bg-white rounded shadow my-1 py-4">
     <h2 class="text-center">Atualizar Post</h2>
 
-    <form class="mx-auto w-75" action="" method="post" id="form-atualizar" name="form-atualizar"> 
+    <form enctype="multipart/form-data" class="mx-auto w-75" action="" method="post" id="form-atualizar" name="form-atualizar"> 
         
       <div class="form-group">
         <label for="titulo">Título:</label>
