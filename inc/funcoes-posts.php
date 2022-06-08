@@ -40,8 +40,20 @@ function lerPosts(mysqli $conexao,
 
 
 /* Usada em post-atualiza.php */
-function lerUmPost(mysqli $conexao):array {    
-    $sql = "";
+function lerUmPost(mysqli $conexao, 
+    int $idPost, int $idUsuarioLogado, string $tipoUsuarioLogado):array {    
+
+    /* Se o usuario logado for admin, então pode carregar
+    os dados de qualquer post de qualquer usuário */
+    if( $tipoUsuarioLogado == 'admin' ){
+        $sql = "SELECT titulo, texto, resumo, imagem, usuario_id FROM posts
+                WHERE id = $idPost";
+    } else {
+    /* Caso contrário, significa que é um usuário editor
+    portanto só poderá carregar os dados dos seus próprios posts. */
+        $sql = "SELECT titulo, texto, resumo, imagem, usuario_id FROM posts
+                WHERE id = $idPost AND usuario_id = $idUsuarioLogado";
+    }
 
 	$resultado = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
     return mysqli_fetch_assoc($resultado); 
