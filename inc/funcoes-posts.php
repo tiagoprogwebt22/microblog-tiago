@@ -6,8 +6,7 @@ function inserirPost(
     mysqli $conexao, string $titulo, string $texto, string $resumo, 
     string $imagem, int $idUsuarioLogado){
 
-    $sql = "INSERT INTO posts(titulo, texto, resumo, imagem, usuario_id)
-            VALUES('$titulo', '$texto', '$resumo', '$imagem', $idUsuarioLogado)";
+    $sql = "INSERT INTO posts(titulo, texto, resumo, imagem, usuario_id) VALUES('$titulo', '$texto', '$resumo', '$imagem', $idUsuarioLogado)";
     
     mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
 } // fim inserirPost
@@ -80,8 +79,15 @@ string $imagem){
 
 
 /* Usada em post-exclui.php */
-function excluirPost(mysqli $conexao){    
-    $sql = "";
+function excluirPost(mysqli $conexao, int $idPost, 
+                int $idUsuarioLogado, string $tipoUsuarioLogado){    
+    
+    if($tipoUsuarioLogado == 'admin'){
+        $sql = "DELETE FROM posts WHERE id = $idPost";
+    } else {
+        $sql = "DELETE FROM posts WHERE id = $idPost 
+                AND usuario_id = $idUsuarioLogado";
+    }                 
 
 	mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
 } // fim excluirPost
