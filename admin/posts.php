@@ -36,7 +36,7 @@ $quantidade = count($posts);
 <?php foreach($posts as $post) { ?>
           <tr>
             <td> <?=$post['titulo']?> </td>
-            <td> <?=$post['data']?> </td>
+            <td> <?=formataData($post['data'])?> </td>
             
             <?php if($tipoUsuarioLogado == 'admin'){ ?>
             <td> <?=$post['autor']?> </td>

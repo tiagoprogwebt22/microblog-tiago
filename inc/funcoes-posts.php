@@ -70,7 +70,7 @@ function excluirPost(mysqli $conexao){
 /* Funções utilitárias */
 
 /* Usada em post-insere.php e post-atualiza.php */
-function upload($arquivo){
+function upload(array $arquivo){
     // Definindo os tipos de imagem aceitos
     $tiposValidos = ["image/png", "image/jpeg", "image/gif",                       "image/svg+xml"];
 
@@ -99,8 +99,11 @@ function upload($arquivo){
 
 
 /* Usada em posts.php e páginas da área pública */
-function formataData(){ 
-    
+function formataData(string $data):string {
+    /* Pegamos a data informada, transformamos em
+    texto (strtotime) e depois aplicamos o formato brasileiro 
+    (dia/mês/ANO) */ 
+    return date("d/m/Y H:i", strtotime($data));
 } // fim formataData
 
 
