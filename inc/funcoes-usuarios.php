@@ -9,7 +9,7 @@ function inserirUsuario(
     $sql = "INSERT INTO usuarios(nome, email, senha, tipo) 
         VALUES('$nome', '$email', '$senha', '$tipo')";
 
-    mysqli_query($conexao, $sql) or die(mysqli_error($conexao));        
+    mysqli_query($conexao, $sql) or die(mysqli_error($conexao));      
 }
 // fim inserirUsuario
 
